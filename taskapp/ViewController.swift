@@ -93,6 +93,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } // --- ここまで変更 ---
     }
     
+
+    
     // segue で画面遷移するに呼ばれる
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let inputViewController:InputViewController = segue.destination as! InputViewController
@@ -103,6 +105,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             let task = Task()
             task.date = Date()
+            
             
             let allTasks = realm.objects(Task.self)
             if allTasks.count != 0 {
