@@ -65,6 +65,7 @@ class InputViewController: UIViewController {
         } else {
             content.body = task.contents
         }
+
         content.sound = UNNotificationSound.default
         
         // ローカル通知が発動するtrigger（日付マッチ）を作成

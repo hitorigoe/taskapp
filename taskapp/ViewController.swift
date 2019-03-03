@@ -10,8 +10,10 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
 
+    
+    @IBOutlet weak var searchBarField: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     // Realmインスタンスを取得する
@@ -24,36 +26,67 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBarField?.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
     }
     
     // MARK: UITableViewDataSourceプロトコルのメソッド
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("startcount")
+        print(taskArray.count)
+        print("startcount")
+        //self.tableView.reloadData()
         return taskArray.count
     }
     
     // 各セルの内容を返すメソッド
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         // 再利用可能な cell を得る
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         // Cellに値を設定する.  --- ここから ---
         let task = taskArray[indexPath.row]
-        cell.textLabel?.text = task.title
-        
+        dump(indexPath.row)
+        cell.textLabel?.text = "[\(task.category)] " + task.title
+            
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        
+            
         let dateString:String = formatter.string(from: task.date)
         cell.detailTextLabel?.text = dateString
+
+
+        
         // --- ここまで追加 ---
-        
-        
+
         return cell
     }
+    // サーチバーで検索ボタンが押された時の処理
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        // キーボードをしまう
+        searchBar.resignFirstResponder()
+        taskArray = try! Realm().objects(Task.self).filter("category == '\(searchBar.text!)'")
+        print("searchcount")
+        print(taskArray.count)
+        print("searchcount")
+        
+        // テーブル再表示
+        self.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
+        self.tableView.reloadData()
+    }
+    
     // MARK: UITableViewDelegateプロトコルのメソッド
     // 各セルを選択した時に実行されるメソッド
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
