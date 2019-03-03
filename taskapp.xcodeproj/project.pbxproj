@@ -16,6 +16,8 @@
 		22FED38122282016009663B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FED37F22282016009663B6 /* LaunchScreen.storyboard */; };
 		22FED38922284822009663B6 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FED38822284822009663B6 /* InputViewController.swift */; };
 		2A97952848B07371AD5C86CB /* Pods_taskapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDF52C8619E6D03AB053A00 /* Pods_taskapp.framework */; };
+		EF64A2CC222C2C10000EE149 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF64A2CB222C2C10000EE149 /* Category.swift */; };
+		EF64A2CE222C2D86000EE149 /* InputCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF64A2CD222C2D86000EE149 /* InputCategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		22FED38222282016009663B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22FED38822284822009663B6 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		672E65044CDD14473CC5EF59 /* Pods-taskapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taskapp.release.xcconfig"; path = "Target Support Files/Pods-taskapp/Pods-taskapp.release.xcconfig"; sourceTree = "<group>"; };
+		EF64A2CB222C2C10000EE149 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		EF64A2CD222C2D86000EE149 /* InputCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,12 +74,14 @@
 				22FED37322282014009663B6 /* AppDelegate.swift */,
 				22FED37522282014009663B6 /* ViewController.swift */,
 				22FED37722282014009663B6 /* Main.storyboard */,
+				EF64A2CD222C2D86000EE149 /* InputCategoryViewController.swift */,
 				22FED37D22282016009663B6 /* Assets.xcassets */,
 				22FED37F22282016009663B6 /* LaunchScreen.storyboard */,
 				22FED38222282016009663B6 /* Info.plist */,
 				22FED37A22282014009663B6 /* taskapp.xcdatamodeld */,
 				22FED38822284822009663B6 /* InputViewController.swift */,
 				22FD07902228AECA00439DDB /* Task.swift */,
+				EF64A2CB222C2C10000EE149 /* Category.swift */,
 			);
 			path = taskapp;
 			sourceTree = "<group>";
@@ -223,7 +229,9 @@
 				22FED37C22282014009663B6 /* taskapp.xcdatamodeld in Sources */,
 				22FD07912228AECB00439DDB /* Task.swift in Sources */,
 				22FED37422282014009663B6 /* AppDelegate.swift in Sources */,
+				EF64A2CE222C2D86000EE149 /* InputCategoryViewController.swift in Sources */,
 				22FED38922284822009663B6 /* InputViewController.swift in Sources */,
+				EF64A2CC222C2C10000EE149 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +381,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 62L6WWA2RQ;
 				INFOPLIST_FILE = taskapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,6 +401,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 62L6WWA2RQ;
 				INFOPLIST_FILE = taskapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
