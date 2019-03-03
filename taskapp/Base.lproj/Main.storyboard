@@ -152,13 +152,24 @@
                                     <segue destination="FR1-G7-gD2" kind="show" id="eyM-KD-kRY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリ選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03m-aq-NOh">
+                                <rect key="frame" x="10" y="547" width="355" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4l-u9-ozN">
+                                <rect key="frame" x="10" y="578" width="375" height="216"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gjJ-GB-0Vu" firstAttribute="leading" secondItem="DPK-8K-o9j" secondAttribute="leading" id="31P-VH-QbV"/>
                             <constraint firstItem="EQz-Ox-dBQ" firstAttribute="top" secondItem="f6X-Wu-DCI" secondAttribute="bottom" constant="10" id="3bb-5d-e45"/>
+                            <constraint firstItem="03m-aq-NOh" firstAttribute="top" secondItem="IEd-lb-2xO" secondAttribute="bottom" constant="10" id="B9i-ng-gav"/>
                             <constraint firstItem="eul-PY-elG" firstAttribute="top" secondItem="DPK-8K-o9j" secondAttribute="top" constant="10" id="CQi-YZ-iOL"/>
                             <constraint firstItem="DPK-8K-o9j" firstAttribute="trailing" secondItem="eul-PY-elG" secondAttribute="trailing" constant="10" id="ENK-nm-N8I"/>
+                            <constraint firstItem="U4l-u9-ozN" firstAttribute="trailing" secondItem="DPK-8K-o9j" secondAttribute="trailing" constant="10" id="G2m-S0-MAe"/>
                             <constraint firstItem="DPK-8K-o9j" firstAttribute="trailing" secondItem="dCq-R9-cRW" secondAttribute="trailing" constant="10" id="GQd-m3-4ra"/>
                             <constraint firstItem="dCq-R9-cRW" firstAttribute="leading" secondItem="DPK-8K-o9j" secondAttribute="leading" constant="10" id="Gh0-S0-EOw"/>
                             <constraint firstItem="eul-PY-elG" firstAttribute="leading" secondItem="DPK-8K-o9j" secondAttribute="leading" constant="10" id="I2a-4n-urC"/>
@@ -171,18 +182,23 @@
                             <constraint firstItem="DPK-8K-o9j" firstAttribute="trailing" secondItem="TJV-uc-B3E" secondAttribute="trailing" constant="10" id="UV4-uT-ITa"/>
                             <constraint firstItem="DPK-8K-o9j" firstAttribute="trailing" secondItem="IEd-lb-2xO" secondAttribute="trailing" constant="10" id="Uam-NH-tMf"/>
                             <constraint firstItem="DPK-8K-o9j" firstAttribute="trailing" secondItem="f6X-Wu-DCI" secondAttribute="trailing" constant="10" id="UoI-Yu-4KT"/>
+                            <constraint firstItem="U4l-u9-ozN" firstAttribute="leading" secondItem="DPK-8K-o9j" secondAttribute="leading" constant="10" id="cxu-yV-dVQ"/>
                             <constraint firstItem="IEd-lb-2xO" firstAttribute="top" secondItem="EQz-Ox-dBQ" secondAttribute="bottom" constant="10" id="dmS-TM-VTM"/>
+                            <constraint firstItem="U4l-u9-ozN" firstAttribute="top" secondItem="03m-aq-NOh" secondAttribute="bottom" constant="10" id="h7B-fF-DVL"/>
                             <constraint firstItem="EhS-0P-EdL" firstAttribute="leading" secondItem="DPK-8K-o9j" secondAttribute="leading" constant="10" id="jSu-54-S6H"/>
+                            <constraint firstItem="DPK-8K-o9j" firstAttribute="trailing" secondItem="03m-aq-NOh" secondAttribute="trailing" constant="10" id="jxK-Ky-pZh"/>
                             <constraint firstItem="TJV-uc-B3E" firstAttribute="top" secondItem="dCq-R9-cRW" secondAttribute="bottom" constant="10" id="k33-yB-Rhr"/>
                             <constraint firstItem="EhS-0P-EdL" firstAttribute="top" secondItem="eul-PY-elG" secondAttribute="bottom" constant="10" id="kGH-Xw-wVP"/>
                             <constraint firstItem="IEd-lb-2xO" firstAttribute="leading" secondItem="U9F-NV-dNY" secondAttribute="leading" constant="10" id="kbg-AX-Tdt"/>
                             <constraint firstItem="DPK-8K-o9j" firstAttribute="trailing" secondItem="EhS-0P-EdL" secondAttribute="trailing" constant="10" id="mmb-B4-X7i"/>
+                            <constraint firstItem="03m-aq-NOh" firstAttribute="leading" secondItem="DPK-8K-o9j" secondAttribute="leading" constant="10" id="oQu-YE-n5y"/>
                             <constraint firstItem="DPK-8K-o9j" firstAttribute="trailing" secondItem="EQz-Ox-dBQ" secondAttribute="trailing" constant="10" id="uob-pW-Bx7"/>
                             <constraint firstItem="TJV-uc-B3E" firstAttribute="leading" secondItem="DPK-8K-o9j" secondAttribute="leading" constant="10" id="zFw-Sj-Npb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DPK-8K-o9j"/>
                     </view>
                     <connections>
+                        <outlet property="categoryPicker" destination="U4l-u9-ozN" id="wDb-WI-kCo"/>
                         <outlet property="categoryTextField" destination="EQz-Ox-dBQ" id="Bmd-Sn-cb0"/>
                         <outlet property="contentsTextField" destination="TJV-uc-B3E" id="ajG-CH-9jV"/>
                         <outlet property="datePicker" destination="gjJ-GB-0Vu" id="arx-r3-qNO"/>

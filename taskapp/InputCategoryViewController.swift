@@ -15,7 +15,7 @@ class InputCategoryViewController: UIViewController {
     
     let realm = try! Realm()
     let category = Category()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

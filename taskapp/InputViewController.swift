@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import UserNotifications    // 追加
 
-class InputViewController: UIViewController {
+class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var titleTextField: UITextField!
     
@@ -20,14 +20,18 @@ class InputViewController: UIViewController {
     
     @IBOutlet weak var categoryTextField: UITextField!
     
+    @IBOutlet weak var categoryPicker: UIPickerView!
     
     let realm = try! Realm()
     var task: Task!
+    //var dataList = ["aaa","bbb"]
+    var dataList = try! Realm().objects(Category.self)
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
         // 背景をタップしたらdismissKeyboardメソッドを呼ぶように設定する
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
@@ -36,6 +40,24 @@ class InputViewController: UIViewController {
         contentsTextField.text = task.contents
         datePicker.date = task.date
         categoryTextField.text = task.category
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
+        return dataList.count
+    }
+    private func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> Category? {
+        
+        return dataList[row]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.categoryPicker.reloadAllComponents()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
