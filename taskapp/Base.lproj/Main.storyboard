@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZfW-vV-7Zg">
-                                <rect key="frame" x="0.0" y="74" width="375" height="549"/>
+                                <rect key="frame" x="0.0" y="172" width="375" height="451"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <pickerView key="tableFooterView" contentMode="scaleToFill" id="UuR-eQ-hir">
                                     <rect key="frame" x="0.0" y="72" width="375" height="216"/>
@@ -56,8 +56,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZfW-vV-7Zg" secondAttribute="bottom" id="5Sm-mb-pwv"/>
+                            <constraint firstItem="ZfW-vV-7Zg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AOc-X6-MIK"/>
                             <constraint firstItem="ZfW-vV-7Zg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Y0b-qQ-sFc"/>
-                            <constraint firstItem="ZfW-vV-7Zg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="jcO-Uk-WwI"/>
+                            <constraint firstItem="ZfW-vV-7Zg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="eoY-o7-Ia5"/>
+                            <constraint firstItem="ZfW-vV-7Zg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="108" id="inz-zx-BKX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZfW-vV-7Zg" secondAttribute="trailing" id="vi6-2z-5F7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

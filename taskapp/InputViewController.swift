@@ -64,13 +64,15 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         try! realm.write {
             self.task.title = self.titleTextField.text!
             self.task.contents = self.contentsTextField.text
             self.task.date = self.datePicker.date
             self.task.category_id = drumRollRow!
-
-            self.realm.add(self.task, update: true)
+            if(self.task.title != "" && self.task.contents != "") {
+                self.realm.add(self.task, update: true)
+            }
         }
         
         setNotification(task: task)   // 追加
