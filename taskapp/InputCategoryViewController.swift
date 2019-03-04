@@ -20,6 +20,14 @@ class InputCategoryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let category = Category()
+        let allCategory = realm.objects(Category.self)
+        if allCategory.count != 0 {
+            category.id = allCategory.max(ofProperty: "id")! + 1
+        }
+        self.category.id = category.id
+        self.category.category_title = category.category_title
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         try! realm.write {
@@ -28,6 +36,8 @@ class InputCategoryViewController: UIViewController {
         }
         super.viewWillDisappear(animated)
     }
+    
+    
 
     /*
     // MARK: - Navigation

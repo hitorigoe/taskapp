@@ -46,13 +46,16 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
     }
     func pickerView(_ pickerView: UIPickerView,
                     numberOfRowsInComponent component: Int) -> Int {
+        print("mmm")
+        print(dataList.count)
+        print("nnn")
         return dataList.count
     }
-    private func pickerView(_ pickerView: UIPickerView,
+    func pickerView(_ pickerView: UIPickerView,
                     titleForRow row: Int,
-                    forComponent component: Int) -> Category? {
+                    forComponent component: Int) -> String? {
         
-        return dataList[row]
+        return dataList[row].category_title
     }
     
     override func viewWillAppear(_ animated: Bool) {
