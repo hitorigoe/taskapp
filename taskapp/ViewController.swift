@@ -53,7 +53,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Cellに値を設定する.  --- ここから ---
         let task = taskArray[indexPath.row]
         dump(indexPath.row)
-        cell.textLabel?.text = "[\(task.category)] " + task.title
+        cell.textLabel?.text = task.title
             
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -61,8 +61,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let dateString:String = formatter.string(from: task.date)
         cell.detailTextLabel?.text = dateString
 
-
-        
         // --- ここまで追加 ---
 
         return cell

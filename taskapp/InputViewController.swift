@@ -18,12 +18,14 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var categoryTextField: UITextField!
+    //@IBOutlet weak var categoryTextField: UITextField!
     
     @IBOutlet weak var categoryPicker: UIPickerView!
     
     let realm = try! Realm()
     var task: Task!
+    var drumRollRow:Int!
+    
     //var dataList = ["aaa","bbb"]
     var dataList = try! Realm().objects(Category.self)
     override func viewDidLoad() {
@@ -39,16 +41,14 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
         titleTextField.text = task.title
         contentsTextField.text = task.contents
         datePicker.date = task.date
-        categoryTextField.text = task.category
+        categoryPicker.selectRow(task.category_id,inComponent: 0,animated: false)
+        drumRollRow = task.category_id
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView,
                     numberOfRowsInComponent component: Int) -> Int {
-        print("mmm")
-        print(dataList.count)
-        print("nnn")
         return dataList.count
     }
     func pickerView(_ pickerView: UIPickerView,
@@ -57,7 +57,7 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
         
         return dataList[row].category_title
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.categoryPicker.reloadAllComponents()
@@ -68,7 +68,8 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
             self.task.title = self.titleTextField.text!
             self.task.contents = self.contentsTextField.text
             self.task.date = self.datePicker.date
-            self.task.category = self.categoryTextField.text!
+            self.task.category_id = drumRollRow!
+
             self.realm.add(self.task, update: true)
         }
         
@@ -76,6 +77,11 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
         
         super.viewWillDisappear(animated)
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        drumRollRow = row
+        
+    }
+    
     // タスクのローカル通知を登録する --- ここから ---
     func setNotification(task: Task) {
         let content = UNMutableNotificationContent()
