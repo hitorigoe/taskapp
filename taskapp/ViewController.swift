@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var searchPickerView: UIPickerView!
+    
     // Realmインスタンスを取得する
     let realm = try! Realm()  // ←追加
     //print(path)
@@ -34,7 +35,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         searchPickerView.delegate = self
         searchPickerView.dataSource = self
-        
+        self.tableView.reloadData()
+        let category = Category()
+        let allCategory = realm.objects(Category.self)
+        if allCategory.count == 0 {
+            
+            //category.id = 1
+            category.category_title = "全て"
+            try! realm.write {
+                self.realm.add(category, update: true)
+            }
+            //realm.add(category, update: true)
+        }
+        self.searchPickerView.reloadAllComponents()
         
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -42,6 +55,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         drumRollRow = row
+        if(row != 0) {
+            taskArray = try! Realm().objects(Task.self).filter("category_id = \(row)")
+        } else {
+            taskArray = try! Realm().objects(Task.self)
+        }
+        self.tableView.reloadData()
         
     }
     func pickerView(_ pickerView: UIPickerView,
@@ -173,6 +192,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        searchPickerView.reloadAllComponents()
     }
 
 

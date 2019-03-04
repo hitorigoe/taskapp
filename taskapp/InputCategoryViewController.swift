@@ -31,8 +31,10 @@ class InputCategoryViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         try! realm.write {
-            self.category.category_title = self.categorytitleTextField.text!
-            self.realm.add(self.category, update: true)
+            if(self.categorytitleTextField.text != "") {
+                self.category.category_title = self.categorytitleTextField.text!
+                self.realm.add(self.category, update: true)
+            }
         }
         super.viewWillDisappear(animated)
     }
