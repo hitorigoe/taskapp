@@ -10,12 +10,13 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate,UIPickerViewDelegate, UIPickerViewDataSource {
 
     
     @IBOutlet weak var searchBarField: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var searchPickerView: UIPickerView!
     // Realmインスタンスを取得する
     let realm = try! Realm()  // ←追加
     //print(path)
@@ -23,15 +24,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 日付近い順\順でソート：降順
     // 以降内容をアップデートするとリスト内は自動的に更新される。
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
-    
+    var dataList = try! Realm().objects(Category.self)
+    var drumRollRow:Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBarField?.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
+        searchPickerView.delegate = self
+        searchPickerView.dataSource = self
         
         
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        drumRollRow = row
+        
+    }
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
+        return dataList.count
+    }
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
+        
+        return dataList[row].category_title
     }
     
     // MARK: UITableViewDataSourceプロトコルのメソッド

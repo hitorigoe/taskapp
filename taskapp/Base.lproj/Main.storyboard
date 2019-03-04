@@ -21,18 +21,13 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZfW-vV-7Zg">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="カテゴリ検索" showsCancelButton="YES" id="yUr-O1-wn9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <pickerView key="tableHeaderView" contentMode="scaleToFill" id="O5j-2H-QuT">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                                    <scopeButtonTitles>
-                                        <string>カテゴリ検索</string>
-                                        <string>Title</string>
-                                    </scopeButtonTitles>
-                                </searchBar>
+                                </pickerView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="lZQ-CG-UyD" detailTextLabel="y73-84-4g8" style="IBUITableViewCellStyleSubtitle" id="vfN-zm-dna">
-                                        <rect key="frame" x="0.0" y="84" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vfN-zm-dna" id="jYH-Xf-bf2">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -79,7 +74,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="searchBarField" destination="yUr-O1-wn9" id="k2g-gk-S7r"/>
+                        <outlet property="searchPickerView" destination="O5j-2H-QuT" id="VNz-7M-krW"/>
                         <outlet property="tableView" destination="ZfW-vV-7Zg" id="qYh-Mv-oKt"/>
                         <segue destination="0Bw-QA-56Y" kind="show" identifier="cellSegue" id="E0B-Ij-jSv"/>
                     </connections>
