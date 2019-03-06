@@ -24,21 +24,15 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
     
     let realm = try! Realm()
     var task: Task!
+    var touchrow: Int!
     var category = Category()
-    //var category: Category!
     var drumRollRow: Int! = 0
-    var touchtype: Int!
-    
-    //var dataList = ["aaa","bbb"]
-    
     var dataList = try! Realm().objects(Category.self)
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(self.task.title != "" && self.task.contents != "") {
-            
+        if(touchrow == 1) {
+            drumRollRow = task.category?.id
         }
-        //drumRollRow = 0
-        // Do any additional setup after loading the view.
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
         // 背景をタップしたらdismissKeyboardメソッドを呼ぶように設定する
@@ -51,7 +45,6 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
         
         categoryPicker.selectRow(task.category?.id ?? 0 ,inComponent: 0,animated: false)
         
-        //drumRollRow = task.category
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -75,16 +68,14 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
     override func viewWillDisappear(_ animated: Bool) {
         
         
-            print("zzxx")
+        
             try! realm.write {
             
                 self.task.title = self.titleTextField.text!
                 self.task.contents = self.contentsTextField.text
                 self.task.date = self.datePicker.date
-                self.category.id = drumRollRow!
-                self.category.category_title = dataList[self.category.id].category_title
-                //self.task.category = category
                 
+                self.task.category = dataList[drumRollRow!]
                 if(self.task.title != "" && self.task.contents != "") {
                     self.realm.add(self.task, update: true)
                 }
@@ -97,10 +88,6 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         drumRollRow = row
-        print(drumRollRow)
-        print("bbbb")
-
-        
     }
     
     // タスクのローカル通知を登録する --- ここから ---

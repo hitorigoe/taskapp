@@ -162,21 +162,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if segue.identifier == "cellSegue" {
             let indexPath = self.tableView.indexPathForSelectedRow
             inputViewController.task = taskArray[indexPath!.row]
-            // 本当はidentifier でわけたい
-            inputViewController.touchtype = 1
+            inputViewController.touchrow = 1
         } else {
             // 新規
             let task = Task()
             task.date = Date()
-            inputViewController.touchtype = 2
-            
-            
             let allTasks = realm.objects(Task.self)
             if allTasks.count != 0 {
                 task.id = allTasks.max(ofProperty: "id")! + 1
             }
             
             inputViewController.task = task
+            inputViewController.touchrow = 2
         }
     }
     
