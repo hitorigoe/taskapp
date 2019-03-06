@@ -134,7 +134,7 @@
                                 <rect key="frame" x="10" y="436" width="355" height="30"/>
                                 <state key="normal" title="カテゴリ作成"/>
                                 <connections>
-                                    <segue destination="FR1-G7-gD2" kind="show" id="eyM-KD-kRY"/>
+                                    <segue destination="FR1-G7-gD2" kind="show" identifier="categoryMake" id="eyM-KD-kRY"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリ選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03m-aq-NOh">
@@ -249,6 +249,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tz7-Y4-UoG"/>
+        <segue reference="E0B-Ij-jSv"/>
     </inferredMetricsTieBreakers>
 </document>

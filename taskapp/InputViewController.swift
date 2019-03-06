@@ -24,13 +24,20 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
     
     let realm = try! Realm()
     var task: Task!
-    var drumRollRow:Int!
+    var category = Category()
+    //var category: Category!
+    var drumRollRow: Int! = 0
+    var touchtype: Int!
     
     //var dataList = ["aaa","bbb"]
+    
     var dataList = try! Realm().objects(Category.self)
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if(self.task.title != "" && self.task.contents != "") {
+            
+        }
+        //drumRollRow = 0
         // Do any additional setup after loading the view.
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
@@ -41,8 +48,10 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
         titleTextField.text = task.title
         contentsTextField.text = task.contents
         datePicker.date = task.date
-        categoryPicker.selectRow(task.category_id,inComponent: 0,animated: false)
-        drumRollRow = task.category_id
+        
+        categoryPicker.selectRow(task.category?.id ?? 0 ,inComponent: 0,animated: false)
+        
+        //drumRollRow = task.category
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -65,15 +74,22 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
     
     override func viewWillDisappear(_ animated: Bool) {
         
-        try! realm.write {
-            self.task.title = self.titleTextField.text!
-            self.task.contents = self.contentsTextField.text
-            self.task.date = self.datePicker.date
-            self.task.category_id = drumRollRow!
-            if(self.task.title != "" && self.task.contents != "") {
-                self.realm.add(self.task, update: true)
+        
+            print("zzxx")
+            try! realm.write {
+            
+                self.task.title = self.titleTextField.text!
+                self.task.contents = self.contentsTextField.text
+                self.task.date = self.datePicker.date
+                self.category.id = drumRollRow!
+                self.category.category_title = dataList[self.category.id].category_title
+                //self.task.category = category
+                
+                if(self.task.title != "" && self.task.contents != "") {
+                    self.realm.add(self.task, update: true)
+                }
             }
-        }
+        
         
         setNotification(task: task)   // 追加
         
@@ -81,6 +97,9 @@ class InputViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDa
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         drumRollRow = row
+        print(drumRollRow)
+        print("bbbb")
+
         
     }
     
